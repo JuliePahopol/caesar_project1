@@ -50,7 +50,7 @@ public class CaesarEnryptor1 {
     }
 
     public String BruteForce() {
-        for (this.key = 0; this.key < this.alphabet.length(); this.key++) {
+        for (key = 0; key < this.alphabet.length(); key++) {
             String decrypted_data = decrypt();
             if (decrypted_data.contains(", ") && decrypted_data.contains(" ") && decrypted_data.contains(". ")) {
                 return decrypted_data;

@@ -28,7 +28,10 @@ public class EntryPoint {
             if (Integer.parseInt(option) == 1) {
 
                 System.out.println("Шифрование:");
-                System.out.println(ce.encrypt());
+                String changed = ce.encrypt();
+                System.out.println(changed);
+                writeToFileFromConsole www = new writeToFileFromConsole();
+                www.writeFile(changed);
                 System.exit(0);
             }
             if (Integer.parseInt(option) == 2) {

@@ -12,7 +12,6 @@ public class EntryPoint {
         FileManager fm = new FileManager();
         String data = fm.readFile();
 
-
         if (Integer.parseInt(option) == 1 || Integer.parseInt(option) == 2) {
             System.out.println("Введите ключ");
             Scanner scanKey = new Scanner(System.in);
@@ -35,11 +34,14 @@ public class EntryPoint {
             if (Integer.parseInt(option) == 2) {
 
                 System.out.println("Дешифровка");
-                System.out.println(ce.decrypt());
+                String changed = ce.decrypt();
+                System.out.println(changed);
+                writeToFileFromConsole www =  new writeToFileFromConsole();
+                www.writeFile(changed);
                 System.exit(0);
 
             }
-//        CaesarEnryptor1 ce = new CaesarEnryptor1(0, data );
+
             if (Integer.parseInt(option) == 3) {
 
                 System.out.println("Взлом шифра с помощью подбора ключей");
@@ -50,3 +52,4 @@ public class EntryPoint {
         }
     }
 }
+

@@ -12,6 +12,7 @@ public class EntryPoint {
         FileManager fm = new FileManager();
         String data = fm.readFile();
 
+
         if (Integer.parseInt(option) == 1 || Integer.parseInt(option) == 2) {
             System.out.println("Введите ключ");
             Scanner scanKey = new Scanner(System.in);
@@ -24,7 +25,8 @@ public class EntryPoint {
             }
 
 
-            CaesarEnryptor1 ce = new CaesarEnryptor1(key, data);
+            encrypt_decrypt ce = new encrypt_decrypt(key,data);
+
             if (Integer.parseInt(option) == 1) {
 
                 System.out.println("Шифрование:");
@@ -39,17 +41,22 @@ public class EntryPoint {
                 System.out.println("Дешифровка");
                 String changed = ce.decrypt();
                 System.out.println(changed);
-                writeToFileFromConsole www =  new writeToFileFromConsole();
+                writeToFileFromConsole www = new writeToFileFromConsole();
                 www.writeFile(changed);
                 System.exit(0);
 
-            }
-
-            if (Integer.parseInt(option) == 3) {
-
-                System.out.println("Взлом шифра с помощью подбора ключей");
-                System.out.println(ce.BruteForce());
+            }  if (Integer.parseInt(option)==3) {
+                System.out.println("brute force method ");
+                String bruteForce= ce.decrypt();
+                System.out.println(bruteForce);
+                writeToFileFromConsole www = new writeToFileFromConsole();
+                www.writeFile(bruteForce);
                 System.exit(0);
+//                bruteForce bf1 = new bruteForce(data);
+//                String bfValue = bf1.bfMethod();
+//                System.out.println(bfValue);
+//                System.exit(0);
+
             }
 
         }

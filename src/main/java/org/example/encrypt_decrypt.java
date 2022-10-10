@@ -1,17 +1,17 @@
 package org.example;
 
-public class CaesarEnryptor1 {
-
+public class encrypt_decrypt {
     private int key;
     private String data;
     private final String alphabet;
     private int position;
 
-    public CaesarEnryptor1(Integer key, String data) {
+    public encrypt_decrypt(Integer key, String data) {
         this.key = key;
         this.data = data.toLowerCase();
         this.alphabet = "abcdefghigklmnopqrstuvwxyz,&*(:'$#@!.?/|- ";
     }
+
 
     public String encrypt() {
         StringBuilder result = new StringBuilder();
@@ -46,16 +46,7 @@ public class CaesarEnryptor1 {
                 continue;
             }
         }
-        return result.toString();  //return result.toString();
+        return result.toString();
     }
 
-    public String BruteForce() {
-        for (key = 0; key < this.alphabet.length(); key++) {
-            String decrypted_data = decrypt();
-            if (decrypted_data.contains(", ") && decrypted_data.contains(" ") && decrypted_data.contains(". ")) {
-                return decrypted_data;
-            }
-        }
-            return null;
-        }
-    }
+}

@@ -15,51 +15,48 @@ public class EntryPoint {
 
         if (Integer.parseInt(option) == 1 || Integer.parseInt(option) == 2) {
             System.out.println("Введите ключ");
-            Scanner scanKey = new Scanner(System.in);
-            int key = scanKey.nextInt();
+            int key = sc1.nextInt();
 
 
-            if (key > 26) {
+            if (key> 28) {
                 System.out.println("Вы ввели неправильный ключ ");
                 System.exit(0);
             }
 
 
-            encrypt_decrypt ce = new encrypt_decrypt(key,data);
-
             if (Integer.parseInt(option) == 1) {
+                System.out.println("Шифрование");
 
-                System.out.println("Шифрование:");
-                String changed = ce.encrypt();
+
+                Encryptor encryptor = new Encryptor(key, data);
+
+                String changed = encryptor.encrypt();
                 System.out.println(changed);
                 writeToFileFromConsole www = new writeToFileFromConsole();
                 www.writeFile(changed);
                 System.exit(0);
             }
+
             if (Integer.parseInt(option) == 2) {
-
                 System.out.println("Дешифровка");
-                String changed = ce.decrypt();
+
+                Decrypt decryptor = new Decrypt(key, data);
+
+                String changed = decryptor.decrypt();
                 System.out.println(changed);
                 writeToFileFromConsole www = new writeToFileFromConsole();
                 www.writeFile(changed);
                 System.exit(0);
-
-            }  if (Integer.parseInt(option)==3) {
-                System.out.println("brute force method ");
-                String BruteForce= ce.decrypt();
-                System.out.println(BruteForce);
-                writeToFileFromConsole www = new writeToFileFromConsole();
-                www.writeFile(BruteForce);
-                System.exit(0);
-//                bruteForce bf1 = new bruteForce(data);
-//                String bfValue = bf1.bfMethod();
-//                System.out.println(bfValue);
-//                System.exit(0);
-
             }
-
+        }
+        else if (Integer.parseInt(option) == 3) {
+            System.out.println("Подбор ключей методом взлома ");
+            bruteForce brute = new bruteForce(data);
+            String changed = brute.bruteMe();
+            System.out.println(changed);
+            writeToFileFromConsole www = new writeToFileFromConsole();
+            www.writeFile(changed);
+            System.exit(0);
         }
     }
 }
-

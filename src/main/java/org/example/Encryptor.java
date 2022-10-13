@@ -15,7 +15,7 @@ public class Encryptor {
     public String encrypt() {
         StringBuilder result = new StringBuilder();
         this.position = 0;
-        for (int i = 0; i < this.data.length(); i++) {
+        for (int i = 0; i < this.data.length() - 1; i++) {
 
             if (this.data.charAt(i) == ' ') {
                 result.append(' ');
@@ -28,26 +28,3 @@ public class Encryptor {
         return result.toString();
     }
 }
-
-//    public String decrypt() {
-//        StringBuilder result = new StringBuilder();
-//        int position;
-//        for (int i = 0; i < this.data.length(); i++) {
-//
-//            if (this.data.charAt(i) == ' ') {
-//                result.append(' ');
-//                continue;
-//            }
-//
-//            position = this.alphabet.indexOf(this.data.charAt(i));
-//            try {
-//                result.append(this.alphabet.charAt(position - this.key));
-//            } catch (StringIndexOutOfBoundsException e) {
-//                continue;
-//            }
-//        }
-//        return result.toString();
-//    }
-
-
-//        && decrypted_data.contains(" ") && decrypted_data.contains(". "))

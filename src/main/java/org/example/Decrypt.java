@@ -1,25 +1,40 @@
 package org.example;
 
 public class Decrypt {
+    private int key;
+    private String data;
+    private final String alphabet;
+    private int position;
 
-    public Decrypt(int key, String data, String alphabet) {
+    public Decrypt(Integer key, String data) {
+        this.key = key;
+        this.data = data.toLowerCase();
+        alphabet =  "abcdefghijklmnopqrstuvwxyz,&*(:'$#@!.?/|- ";
 
-            StringBuilder result = new StringBuilder();
-            for (int i = 0; i < data.length(); i++) {
+    }
 
-                if (data.charAt(i) == ' ') {
-                    result.append(' ');
-                    continue;
-                }
+    public String decrypt() {
 
-                int position = alphabet.indexOf(data.charAt(i));
-                try {
-                    result.append(alphabet.charAt(position - key));
-                } catch (StringIndexOutOfBoundsException e) {
-                   continue;
-                }
+        StringBuilder result = new StringBuilder();
+        int position;
+        for (int i = 0; i < this.data.length(); i++) {
+
+            if (this.data.charAt(i) == ' ') {
+                result.append(' ');
+                continue;
+            }
+
+            position = this.alphabet.indexOf(this.data.charAt(i));
+            try {
+                result.append(this.alphabet.charAt(position - this.key));
+            } catch (StringIndexOutOfBoundsException e) {
+                continue;
             }
         }
+        return result.toString();
     }
+}
+
+
 
 
